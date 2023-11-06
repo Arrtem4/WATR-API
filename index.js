@@ -33,10 +33,10 @@ app.use(
 app.use(express.static(path.join(__dirname, "static")));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/auth", authRoute);
-app.use("/post", postRoute);
-app.use("/get", getRoute);
-app.use("/delete", deleteRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/post", postRoute);
+app.use("/api/get", getRoute);
+app.use("/api/delete", deleteRoute);
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "static", "index.html"));
 });

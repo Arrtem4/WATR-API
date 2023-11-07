@@ -44,8 +44,8 @@ app.use("/api/auth", authRoute);
 app.use("/api/post", postRoute);
 app.use("/api/get", getRoute);
 app.use("/api/delete", deleteRoute);
-app.get("*", (req, res) => {
-    res.sendFile(path.join("static", "index.html"));
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "static", "index.html"));
 });
 
 app.listen(3001, () => {

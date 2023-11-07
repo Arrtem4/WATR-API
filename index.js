@@ -49,7 +49,7 @@ setInterval(async () => {
     } catch (error) {
         console.error(error);
     }
-}, 840000);
+}, 840000 * 2);
 app.listen(3001, () => {
     console.log(`App running`);
 });

@@ -1,5 +1,14 @@
 const router = require("express").Router();
 const db = require("../db_get");
+router.get("/healthCheck", async (req, res) => {
+    try {
+        console.log("Refresh");
+        res.status(200).send("ok");
+    } catch (error) {
+        console.log(error);
+        res.status(403).send(error);
+    }
+});
 router.get("/tags", async (req, res) => {
     try {
         const data = await db.getTags();

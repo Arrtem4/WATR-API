@@ -41,13 +41,10 @@ app.use("/api/delete", deleteRoute);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "static", "index.html"));
 });
-app.get("/api/healthCheck", async (req, res) => {
-    res.status(200).send("ok");
-});
 setInterval(async () => {
     try {
         await axios.get(
-            "https://whatwiththereviews.onrender.com/api/healthCheck"
+            "https://whatwiththereviews.onrender.com/api/get/healthCheck"
         );
     } catch (error) {
         console.error(error);

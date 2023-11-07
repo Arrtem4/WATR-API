@@ -24,13 +24,22 @@ app.use(
         resave: true,
         saveUninitialized: true,
         cookie: {
-            // sameSite: "none",
-            // secure: true,
+            sameSite: "lax",
+            secure: true,
             maxAge: 1000 * 60 * 60 * 12,
         },
     })
 );
+
+app.listen(3000);
 app.use(express.static(path.join(__dirname, "static")));
+app.use((req, res, next) => {
+    if (!req.url.startsWith("/api/")) {
+      res.redirect("/index.html");
+    } else {
+      next();
+    }
+  });
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api/auth", authRoute);

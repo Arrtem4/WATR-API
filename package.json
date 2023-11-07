@@ -1,7 +1,7 @@
 {
-    "name": "server",
-    "version": "2.0.0",
-    "description": "server",
+    "name": "whataboutthereviews",
+    "version": "3.0.0",
+    "description": "web-service",
     "main": "index.js",
     "keywords": [],
     "scripts": {

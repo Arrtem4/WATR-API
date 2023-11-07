@@ -30,7 +30,7 @@ app.use(
         },
     })
 );
-// app.use(express.static(path.join(__dirname, "static")));
+app.use(express.static(path.join(__dirname, "static")));
 // app.use((req, res, next) => {
 //     if (!req.url.startsWith("/api/")) {
 //       res.redirect("/");
@@ -44,7 +44,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/post", postRoute);
 app.use("/api/get", getRoute);
 app.use("/api/delete", deleteRoute);
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "static", "index.html"));
 });
 

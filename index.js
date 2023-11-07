@@ -30,24 +30,22 @@ app.use(
         },
     })
 );
-
-app.listen(3000);
-app.use(express.static(path.join(__dirname, "static")));
-app.use((req, res, next) => {
-    if (!req.url.startsWith("/api/")) {
-      res.redirect("/");
-    } else {
-      next();
-    }
-  });
+// app.use(express.static(path.join(__dirname, "static")));
+// app.use((req, res, next) => {
+//     if (!req.url.startsWith("/api/")) {
+//       res.redirect("/");
+//     } else {
+//       next();
+//     }
+//   });
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/api/auth", authRoute);
 app.use("/api/post", postRoute);
 app.use("/api/get", getRoute);
 app.use("/api/delete", deleteRoute);
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "static", "index.html"));
+app.get("*", (req, res) => {
+    res.sendFile(path.join("static", "index.html"));
 });
 
 app.listen(3001, () => {

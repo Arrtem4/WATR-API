@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
+const axios = require("axios");
 const passport = require("passport");
 require("dotenv").config();
 require("./passport");
@@ -40,6 +41,18 @@ app.use("/api/delete", deleteRoute);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "static", "index.html"));
 });
+app.get("/api/healthCheck", async (req, res) => {
+    res.status(200).send("ok");
+});
+setInterval(async () => {
+    try {
+        await axios.get(
+            "https://whatwiththereviews.onrender.com/api/healthCheck"
+        );
+    } catch (error) {
+        console.error(error);
+    }
+}, 1000 * 60 * 14);
 app.listen(3001, () => {
     console.log(`App running`);
 });

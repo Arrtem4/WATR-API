@@ -35,7 +35,7 @@ app.listen(3000);
 app.use(express.static(path.join(__dirname, "static")));
 app.use((req, res, next) => {
     if (!req.url.startsWith("/api/")) {
-      res.redirect("/index.html");
+      res.redirect("/");
     } else {
       next();
     }
